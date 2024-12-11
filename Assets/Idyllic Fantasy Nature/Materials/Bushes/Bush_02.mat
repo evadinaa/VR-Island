@@ -81,7 +81,7 @@ Material:
     - _BottomColor: {r: 0.6313726, g: 0.6208051, b: 0, a: 0}
     - _Bottom_Color: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Player_Position: {r: 178.521, g: 1.2154894, b: 63.112587, a: 0}
+    - _Player_Position: {r: 50.521004, g: 3.8154898, b: 60.612587, a: 0}
     - _TopColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 0}
     - _Top_Color: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
