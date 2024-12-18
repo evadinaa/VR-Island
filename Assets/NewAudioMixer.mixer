@@ -101,7 +101,10 @@ AudioMixerSnapshotController:
   m_Name: Layer Water-Earth
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 994a02545f885443ebd056a2f9ab2715
-  m_FloatValues: {}
+  m_FloatValues:
+    d79ff2922a0d243bcadfd7bca335cbee: -19.928473
+    b0dc04a5f889149b3b4b0505419ec095: -19.928473
+    e35a3b8c472d24c09ab0f2bfa61bb2c1: -19.928473
   m_TransitionOverrides: {}
 --- !u!244 &3772953469919098122
 AudioMixerEffectController:
