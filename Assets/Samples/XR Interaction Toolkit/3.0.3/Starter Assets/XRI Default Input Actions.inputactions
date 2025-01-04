@@ -2763,6 +2763,45 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Teleport",
+            "id": "afcd94db-151c-498c-886e-decb4b5d943e",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "8f0963cf-9e45-4861-b4f9-1e4584f3c697",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "26938c31-b379-44fc-9f09-2758dd80fbc5",
+                    "path": "<XRController>{LeftHand}/gripButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9e7141f6-3a4a-42b4-8b68-7774056d4720",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

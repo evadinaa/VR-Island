@@ -15,9 +15,11 @@ public class LightTunnelTransition : MonoBehaviour
 
     private bool transitionStarted = false;
 
-    private void OnTriggerEnter(Collider other)
+    // Método público chamado pelo ShieldController
+    public void StartTransition()
     {
-        if (other.CompareTag("Player") && !transitionStarted)
+        Debug.Log("Transição iniciada pelo ShieldController!");
+        if (!transitionStarted)
         {
             transitionStarted = true;
             StartCoroutine(StartLightTunnel());
