@@ -8,9 +8,13 @@ public class ShieldController : MonoBehaviour
     public LightTunnelTransition transitionHandler;
     public Transform playerTransform; // Referência ao transform do Player
     public bool isInsideShield = false;
+    private bool isShieldActive = false; // Flag to control shield activation
 
     void Start()
     {
+        // Ensure the shield is inactive at the start
+        gameObject.SetActive(false);
+
         characterController = FindObjectOfType<CharacterController>();
         animator = GetComponent<Animator>();
 
@@ -19,18 +23,17 @@ public class ShieldController : MonoBehaviour
         {
             transitionHandler = FindObjectOfType<LightTunnelTransition>();
         }
-
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (isShieldActive && other.CompareTag("Player")) // Check if shield is active
         {
             isInsideShield = true;
-            playerTransform.SetParent(transform);  // Torna o player filho do escudo, seguindo o movimento
+            playerTransform.SetParent(transform); // Torna o player filho do escudo, seguindo o movimento
 
-        // Bloqueia movimentos do jogador
-        if (characterController != null) characterController.enabled = false;
+            // Bloqueia movimentos do jogador
+            if (characterController != null) characterController.enabled = false;
 
             // Inicia a animação
             if (animator != null)
@@ -45,27 +48,32 @@ public class ShieldController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInsideShield = false;
-            playerTransform.SetParent(null);  // Remove o player da hierarquia do escudo, permitindo a movimentação independente
-            // Restaura movimentos apenas se necessário (não será o caso com Scene Change)
+            playerTransform.SetParent(null); // Remove o player da hierarquia do escudo, permitindo a movimentação independente
 
+            // Restaura movimentos apenas se necessário (não será o caso com Scene Change)
             if (characterController != null) characterController.enabled = true;
         }
     }
 
-        // chamado pelo evento da animação
-        public void TriggerTransition()
+    // Called by IADE Island or similar activator
+    public void ActivateShield()
     {
-        {
-            if (transitionHandler != null)
-            {
-                transitionHandler.StartTransition(); // chama o method público no LightTunnelTransition
-            }
-            else
-            {
-                Debug.LogError("TransitionHandler não foi atribuído no Inspector ou encontrado na cena!");
-            }
-        }
+        gameObject.SetActive(true); // Enable the shield GameObject
+        isShieldActive = true;
+        Debug.Log("Shield is now visible and active!");
     }
 
+    // chamado pelo evento da animação
+    public void TriggerTransition()
+    {
+        if (transitionHandler != null)
+        {
+            transitionHandler.StartTransition(); // chama o method público no LightTunnelTransition
+        }
+        else
+        {
+            Debug.LogError("TransitionHandler não foi atribuído no Inspector ou encontrado na cena!");
+        }
+    }
 }
 
