@@ -8,6 +8,9 @@ TagManager:
   - Portal Ignore
   - Magic Circle
   - Seed
+  - Area1
+  - Area2
+  - Area3
   layers:
   - Default
   - TransparentFX
