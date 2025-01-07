@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class SeedPlacingManager : MonoBehaviour
 {
-    public GameObject tree;             // The tree object
-    public GameObject magicCircle;      // The magic circle object
-    public GameObject seed;             // The seed object
-    public GameObject explosionEffect;  // Explosion effect before the bridge reveal
+    public GameObject tree;                  // The tree object
+    public GameObject magicCircle;           // The magic circle object
+    public GameObject seed;                  // The seed object
+    public GameObject explosionEffect;       // Explosion effect before the bridge reveal
     public BridgeRevealManager bridgeRevealManager; // Reference to the bridge reveal manager
+    public AudioSource audioSource;          // Audio source for playing sounds
+    public AudioClip treeGrowSound;          // SFX for tree growing
+    public AudioClip explosionSound;         // SFX for explosion
 
     private Animator treeAnimator;
 
@@ -35,6 +38,9 @@ public class SeedPlacingManager : MonoBehaviour
         if (tree) tree.SetActive(true);
         if (treeAnimator) treeAnimator.Play("BloomEffect");
 
+        // Play tree growth sound
+        if (audioSource && treeGrowSound) audioSource.PlayOneShot(treeGrowSound);
+
         // Trigger explosion after animation finishes
         Invoke("TriggerExplosion", treeAnimator.GetCurrentAnimatorStateInfo(0).length);
     }
@@ -43,6 +49,9 @@ public class SeedPlacingManager : MonoBehaviour
     {
         if (explosionEffect) explosionEffect.SetActive(true);
 
+        // Play explosion sound
+        if (audioSource && explosionSound) audioSource.PlayOneShot(explosionSound);
+
         // Notify bridge reveal script to start
         if (bridgeRevealManager) bridgeRevealManager.StartBridgeReveal();
 
@@ -50,3 +59,4 @@ public class SeedPlacingManager : MonoBehaviour
         Destroy(explosionEffect, 2.0f); // Adjust time as needed
     }
 }
+
