@@ -8,6 +8,7 @@ public class MusicMixer : MonoBehaviour
     public AudioMixerSnapshot Area1;
     public AudioMixerSnapshot Area2;
     public AudioMixerSnapshot Area3;
+    public AudioMixerSnapshot Area4;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -24,6 +25,11 @@ public class MusicMixer : MonoBehaviour
         if (other.CompareTag("Area3"))
         {
             Area3.TransitionTo(5);
+        }
+
+        if (other.CompareTag("Area4"))
+        {
+            Area3.TransitionTo(3);
         }
     }
 
