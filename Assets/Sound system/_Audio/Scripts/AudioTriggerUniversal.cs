@@ -44,7 +44,8 @@ public class AudioTriggerUniversal : MonoBehaviour
 
             if (destroyAfterSound)
             {
-                Destroy(gameObject);
+                GetComponent<Collider>().enabled = false;
+                //Destroy(gameObject, triggerSound.length);
             }
         }
         else

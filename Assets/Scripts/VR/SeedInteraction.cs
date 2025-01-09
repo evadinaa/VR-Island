@@ -26,7 +26,7 @@ public class SeedInteraction : MonoBehaviour
         }
     }
 
-    private void OnGrab(SelectEnterEventArgs args)
+    public void OnGrab(SelectEnterEventArgs args)
     {
         // Desative o efeito especial
         if (seedEffect != null)
