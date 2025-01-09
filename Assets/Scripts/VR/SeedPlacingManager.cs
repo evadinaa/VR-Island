@@ -7,7 +7,6 @@ public class SeedPlacingManager : MonoBehaviour
     public GameObject seed; // The seed object
     public GameObject bridge; // The bridge to activate
     public AudioClip treeGrowSound; // SFX for tree growing
-    public AudioClip bridgeRevealSound; // SFX for bridge reveal
 
     private AudioSource audioSource;
     private Animator treeAnimator;
@@ -48,11 +47,7 @@ public class SeedPlacingManager : MonoBehaviour
         if (treeAnimator) treeAnimator.Play("BloomEffect");
 
         // Play tree growth sound
-        if (audioSource && treeGrowSound)
-        {
-            audioSource.clip = treeGrowSound;
-            audioSource.Play();
-        }
+        if (audioSource && treeGrowSound) audioSource.PlayOneShot(treeGrowSound);
 
         // Activate bridge after animation finishes
         if (treeAnimator != null)
@@ -72,14 +67,6 @@ public class SeedPlacingManager : MonoBehaviour
         {
             bridge.SetActive(true); // Make the bridge visible
             Debug.Log("Bridge is now visible!");
-
-            // Play bridge reveal sound
-            if (audioSource && bridgeRevealSound)
-            {
-                audioSource.clip = bridgeRevealSound;
-                audioSource.Play();
-                Debug.Log("Bridge reveal SFX played!");
-            }
         }
         else
         {
