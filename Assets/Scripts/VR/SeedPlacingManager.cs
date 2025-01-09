@@ -5,18 +5,18 @@ public class SeedPlacingManager : MonoBehaviour
     public GameObject tree;                  // The tree object
     public GameObject magicCircle;           // The magic circle object
     public GameObject seed;                  // The seed object
-    public GameObject explosionEffect;       // Explosion effect before the bridge reveal
+    // public GameObject explosionEffect;       // Explosion effect before the bridge reveal
     public BridgeRevealManager bridgeRevealManager; // Reference to the bridge reveal manager
     public AudioSource audioSource;          // Audio source for playing sounds
     public AudioClip treeGrowSound;          // SFX for tree growing
-    public AudioClip explosionSound;         // SFX for explosion
+    // public AudioClip explosionSound;         // SFX for explosion
 
     private Animator treeAnimator;
 
     void Start()
     {
         tree.SetActive(false); // Tree starts hidden
-        explosionEffect.SetActive(false); // Explosion starts disabled
+        //explosionEffect.SetActive(false); // Explosion starts disabled
         treeAnimator = tree.GetComponent<Animator>();
     }
 
@@ -45,18 +45,18 @@ public class SeedPlacingManager : MonoBehaviour
         Invoke("TriggerExplosion", treeAnimator.GetCurrentAnimatorStateInfo(0).length);
     }
 
-    void TriggerExplosion()
+    void TriggerBridge()
     {
-        if (explosionEffect) explosionEffect.SetActive(true);
+        // if (explosionEffect) explosionEffect.SetActive(true);
 
         // Play explosion sound
-        if (audioSource && explosionSound) audioSource.PlayOneShot(explosionSound);
+        // if (audioSource && explosionSound) audioSource.PlayOneShot(explosionSound);
 
         // Notify bridge reveal script to start
         if (bridgeRevealManager) bridgeRevealManager.StartBridgeReveal();
 
         // Disable the explosion effect after a short time
-        Destroy(explosionEffect, 2.0f); // Adjust time as needed
+        // Destroy(explosionEffect, 2.0f); // Adjust time as needed
     }
 }
 
