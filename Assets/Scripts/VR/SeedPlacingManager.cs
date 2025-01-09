@@ -42,7 +42,7 @@ public class SeedPlacingManager : MonoBehaviour
         if (audioSource && treeGrowSound) audioSource.PlayOneShot(treeGrowSound);
 
         // Trigger explosion after animation finishes
-        Invoke("TriggerBridge", treeAnimator.GetCurrentAnimatorStateInfo(0).length);
+        Invoke("TriggerBridge", 3f); //treeAnimator.GetCurrentAnimatorStateInfo(0).length
     }
 
     void TriggerBridge()
